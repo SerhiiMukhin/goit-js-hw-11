@@ -12,16 +12,12 @@ export default class PixabayApiService {
   fetchImages() {
     return axios
       .get(
-        `https://pixabay.com/api/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&${this.page}&per_page=40`
+        `https://pixabay.com/api/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=100`
       )
       .then(response => {
         this.page += 1;
-        // console.log(response.data.hits);
+        console.log(response.data);
         return response.data;
-        // const data = response.data.hits.map(picture =>
-        //   console.log(picture.largeImageURL)
-        // );
-        // console.log(data);
       })
       .catch(error => console.log(error));
   }
