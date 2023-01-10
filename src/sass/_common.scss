@@ -1,20 +1,18 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-}
+// .gallery {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 30px;
+// }
 
-.wrapper {
-    display: flex;
-    width: calc((100% - 120px) / 5);
-}
+// // .wrapper {
+// //     display: flex;
+// // }
 
-img {
-display: block;
-width: 100%;
-}
+// img {
+// display: block;
+// }
 
 .is-hidden {
     display: none;

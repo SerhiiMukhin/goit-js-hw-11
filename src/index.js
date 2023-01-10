@@ -68,5 +68,6 @@ function clearContainer() {
 function appendImagesMarkup(data) {
   refs.container.insertAdjacentHTML('beforeend', pictureTemplate(data.hits));
   const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250});
+  lightbox.refresh()
 }
 
