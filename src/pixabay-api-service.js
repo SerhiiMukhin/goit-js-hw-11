@@ -12,7 +12,7 @@ export default class PixabayApiService {
   fetchImages() {
     return axios
       .get(
-        `https://pixabay.com/api/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=100`
+        `https://pixabay.com/api/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
       )
       .then(response => {
         this.page += 1;
