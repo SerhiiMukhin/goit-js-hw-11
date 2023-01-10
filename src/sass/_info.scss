@@ -1,0 +1,14 @@
+.info {
+    display: flex;
+    gap: 15px;
+    align-content: space-between;
+    padding: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: calc((100% - 45px) / 2);
+    text-align: center;
+}

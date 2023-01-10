@@ -9,17 +9,16 @@ export default class PixabayApiService {
     this.page = 1;
   }
 
-  fetchImages() {
-    return axios
-      .get(
+  async fetchImages() {
+    try {
+      const response = await axios.get(
         `https://pixabay.com/api/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
-      )
-      .then(response => {
-        this.page += 1;
-        // console.log(response.data);
-        return response.data;
-      })
-      .catch(error => console.log(error));
+      );
+      this.page += 1;
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
   }
 
   resetPage() {
