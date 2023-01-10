@@ -1,4 +1,7 @@
 import Notiflix from 'notiflix';
+import SimpleLightbox from "simplelightbox";
+
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 import PixabayApiService from './pixabay-api-service';
 import pictureTemplate from './templates/template.hbs';
@@ -35,6 +38,7 @@ function onSubmit(event) {
       clearContainer();
       Notiflix.Notify.info(`Hooray! We found ${data.totalHits} images.`);
       appendImagesMarkup(data);
+      // const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250});
     }
     if (refs.container.children.length >= data.totalHits) {
       refs.loadMoreBtn.classList.add('is-hidden');
@@ -63,4 +67,6 @@ function clearContainer() {
 
 function appendImagesMarkup(data) {
   refs.container.insertAdjacentHTML('beforeend', pictureTemplate(data.hits));
+  const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250});
 }
+
