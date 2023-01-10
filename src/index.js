@@ -38,7 +38,6 @@ function onSubmit(event) {
       clearContainer();
       Notiflix.Notify.info(`Hooray! We found ${data.totalHits} images.`);
       appendImagesMarkup(data);
-      // const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250});
     }
     if (refs.container.children.length >= data.totalHits) {
       refs.loadMoreBtn.classList.add('is-hidden');
@@ -54,6 +53,7 @@ function loadMore() {
   pixabayApiService.fetchImages().then(data => {
     appendImagesMarkup(data);
     if (refs.container.children.length >= data.totalHits) {
+      refs.loadMoreBtn.classList.add('is-hidden');
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
       );
