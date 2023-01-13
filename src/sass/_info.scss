@@ -1,15 +1,17 @@
 .info {
-    display: flex;
-    gap: 15px;
-    align-content: space-between;
-    padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-content: space-between;
+  padding: 15px;
 }
 
 .info-item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: calc(100% / 2 - 15px);
-    text-align: center;
+  width: calc((100% - 15px) / 2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
