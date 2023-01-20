@@ -5,7 +5,7 @@ export default class LoadMoreButton {
   }
 }
 
-getRefs(selector) {
-    const refs = {}
-    refs.button = document
+function getRefs(selector) {
+  const refs = {};
+  refs.button = document;
 }
