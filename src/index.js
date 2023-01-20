@@ -19,10 +19,16 @@ refs.loadMoreBtn.classList.add('is-hidden');
 
 const pixabayApiService = new PixabayApiService();
 
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 async function onSubmit(event) {
   event.preventDefault();
 
-  pixabayApiService.query = event.currentTarget.elements.searchQuery.value;
+  pixabayApiService.query =
+    event.currentTarget.elements.searchQuery.value.trim();
 
   refs.loadMoreBtn.classList.add('is-hidden');
 
@@ -30,17 +36,22 @@ async function onSubmit(event) {
 
   try {
     const data = await pixabayApiService.fetchImages();
+
     if (data === undefined || data.hits.length === 0) {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
+
       clearContainer();
     } else {
       refs.loadMoreBtn.classList.remove('is-hidden');
 
       clearContainer();
+
       Notiflix.Notify.info(`Hooray! We found ${data.totalHits} images.`);
+
       appendImagesMarkup(data);
+
       if (refs.container.children.length >= data.totalHits) {
         refs.loadMoreBtn.classList.add('is-hidden');
 
@@ -53,12 +64,16 @@ async function onSubmit(event) {
     console.log(error);
   }
 }
+
 async function loadMore() {
   try {
     const data = await pixabayApiService.fetchImages();
+
     appendImagesMarkup(data);
+
     if (refs.container.children.length >= data.totalHits) {
       refs.loadMoreBtn.classList.add('is-hidden');
+
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
       );
@@ -74,9 +89,6 @@ function clearContainer() {
 
 function appendImagesMarkup(data) {
   refs.container.insertAdjacentHTML('beforeend', pictureTemplate(data.hits));
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
+
   lightbox.refresh();
 }
